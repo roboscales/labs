@@ -1,23 +1,17 @@
-//this is very very hard
-#include<stdio.h>
-#include<conio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
-float fahr, celsius;
-int lower, upper, step;
+    int c;
 
-lower = 0;
-upper = 300;
-step = 20;
+    c = getchar();
 
-fahr = lower;
+    while(c != EOF)
+    {
+        putchar(c);
+        c = getchar();
+    }
 
-while(fahr <= upper)
-{
-    celsius = (5.0/9.0) * (fahr - 32.0);
-    printf("%3.0f %6.1f\n", fahr, celsius);
-    fahr = fahr + step;
-}
-return 0;
+    return 0;
 }
