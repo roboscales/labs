@@ -7,14 +7,14 @@ int main()
 
     lower = 0;
     upper = 500;
-    ster = 20;
+    step = 20;
 
     cel = lower;
 
     while (cel <= upper)
     {
-        fahr = 32 + c * (5.0/9.0);
-        printf("%-4.0f %6.1f",celsius, fahr);
+        fahr = 32 + cel * (5.0/9.0);
+        printf("%-4.0f %6.1f",cel, fahr);
         cel += step;
     }
     return 0;
