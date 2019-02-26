@@ -8,8 +8,7 @@
 
 #define N 10
 
-float fsmin(float *(array)[N], int string, int strsize);
-float loc(float *(array)[N], int size);
+void loc(float *(array)[N], int size);
 float frand(void);
 void fswap(float *el1, float *el2);
 
@@ -17,7 +16,7 @@ void fswap(float *el1, float *el2);
 
 float frand(void){
 
-     float ret = (float)rand() / ((double)rand() + 0.1);
+     float ret = (float)rand() / ((float)rand() + 0.1);
      return ret - floor(ret);
 }
 
@@ -50,20 +49,8 @@ int main(){
 
    printf("A new matrix:\n");
 
-   for(i = 0; i < N; i++){
-      minpos = -1;
-      for(j = 0; j < N; j++){
-	 if(a[i][j] > 0 && minpos == -1) minpos = j;
-	 else if(a[i][j] > 0 && a[i][j] < a[i][minpos]) minpos = j;
-	 //fswap(&a[i][minpos], &a[i][N-1-j]);
-       }
+   loc(a, N);
 
-       /*for(j = 0; j < N; j++){
-	 if(j == minpos)
-	    fswap(&a[i][j], &a[i][N-1-j]);
-	 }
-       */
-   }
 
    for(i = 0; i < N; i++){
       for(j = 0; j < N; j++){
@@ -76,4 +63,21 @@ int main(){
 
    getch();
    return 0;
+}
+
+void loc(float *array[N], int size){
+
+
+     int minpos, i, j;
+
+     for(i = 0; i < size; i++){
+      minpos = -1;
+      for(j = 0; j < size; j++){
+	 if(array[i][j] > 0 && minpos == -1) minpos = j;
+	 else if(array[i][j] > 0 && array[i][j] < array[i][minpos]) minpos = j;
+	 //fswap(&a[i][minpos], &a[i][N-1-j]);
+       }
+
+       fswap(&array[i][minpos], &array[i][size-i-1]);
+   }
 }
