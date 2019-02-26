@@ -33,16 +33,19 @@ void fswap(float *el1, float *el2){
 int main(){
 
    float a[N][N];
-   int i, j, n, transfer = 0, minpos = 0;
+   int *(i)[N], *j, *j1;
+
+   i = a;
 
    printf("Source matrix:\n");
 
    srand(time(NULL));
 
-   for(i = 0; i < N; i++){
-      for(j = 0; j < N; j++){
-	a[i][j] = frand();
-	printf("%- 3.2f", a[i][j]);
+   for(i; i < a + N; i++){
+     j1 = *i;
+      for(j = *i; j < j1 + N; j++){
+	*j = frand();
+	printf("%- 3.2f", *j);
       }
       printf("\n");
    }
@@ -52,9 +55,10 @@ int main(){
    loc(a, N);
 
 
-   for(i = 0; i < N; i++){
-      for(j = 0; j < N; j++){
-	printf("%- 3.2f", a[i][j]);
+   for(i; i < a + N; i++){
+     j1 = *i;
+      for(j = *i; j < j1 + N; j++){
+	printf("%- 3.2f", *j);
       }
       printf("\n");
    }
@@ -65,7 +69,7 @@ int main(){
    return 0;
 }
 
-void loc(float *array[N], int size){
+void loc(float *(array)[N], int size){
 
 
      int minpos, i, j;
